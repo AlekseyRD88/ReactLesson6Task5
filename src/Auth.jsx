@@ -21,11 +21,12 @@ class Auth extends Component {
     })
   }
   render() {
-    <Login />;
+    /*<Login />;
     let button;
     if (this.state.isLoggedIn===false) {
       button = <Login onLogin={this.handleLoginClick}/>; 
       <Spinner />
+      
       
     } else {
       button = <Logout onLogout={this.handleLogoutClick} />;  
@@ -34,7 +35,16 @@ class Auth extends Component {
       <div>
         {button}
       </div>
-    );
+    );*/
+    const { processing, isLoggedIn} = this.state;
+
+    if (processing) {
+      return <Spinner size={24} />;
+    }
+    if (isLoggedIn) {
+      return <Logout onLogout={this.handleLogoutClick} />;  
+    }
+    return <Login onLogin={this.handleLoginClick}/>; 
   }
 }
 

@@ -1,10 +1,15 @@
 import React from 'react';
+import './index.scss';
 
-function Spinner(props) {
-  return (
-      <span class="spinner"><Spinner size={props.size} /></span>
+const Spinner = ({ size }) => (
+  <span 
+    style={{
+      width: size,
+      height: size,
+    }}
+  className="spinner" 
+  />
+);
 
-  );
-}
 
 export default Spinner;
