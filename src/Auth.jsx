@@ -6,36 +6,28 @@ class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
+      isLoggedIn: null,
+      processing: false,
     }
   }
   handleLoginClick = () => {
     this.setState({
-      isLoggedIn: true
-    })
-  }
+      processing: true,
+    });
+    setTimeout(() => {
+      this.setState({
+      processing: false,
+      isLoggedIn: true,
+    });
+    }, 2000);
+  };
 
   handleLogoutClick = () => {
     this.setState({
       isLoggedIn: false
-    })
-  }
+    });
+  };
   render() {
-    /*<Login />;
-    let button;
-    if (this.state.isLoggedIn===false) {
-      button = <Login onLogin={this.handleLoginClick}/>; 
-      <Spinner />
-      
-      
-    } else {
-      button = <Logout onLogout={this.handleLogoutClick} />;  
-    }
-    return (
-      <div>
-        {button}
-      </div>
-    );*/
     const { processing, isLoggedIn} = this.state;
 
     if (processing) {
